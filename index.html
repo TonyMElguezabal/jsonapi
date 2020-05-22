@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+
+    <title>Perros</title>
+  </head>
+
+  <body>
+    <div class="container my-5 text center">
+      <button class="btn btn-danger w-100" onclick="traer()">
+        Obtener Perro random
+      </button>
+      <div class="mt-5" id="contenido">
+        <p></p>
+      </div>
+      <div class="imagen">
+        <img
+          id="imagen"
+          src="https://dam.ngenespanol.com/wp-content/uploads/2019/03/luna-colores-nuevo.png"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <script>
+      var contenido = document.querySelector("#contenido");
+      var jsonimage = "noimage";
+      function traer() {
+        fetch("https://dog.ceo/api/breeds/image/random").then(function (
+          response
+        ) {
+          response.json().then(function (data) {
+            URL = data.message;
+            console.log(URL);
+            document.getElementById("imagen").src = URL;
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
